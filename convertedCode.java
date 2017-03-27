@@ -8,6 +8,7 @@ public class convertedCode
 		{
 			//makes sure that three arguments are being used
 			System.out.println("Error - Expected usage: ./main input.txt output.txt");
+			//returns if error was made
 			return;
 		}
 		try
