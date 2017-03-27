@@ -45,5 +45,51 @@ public class Matrix
 		return det;//returns the double
 		
 	}
+	public Matrix inverse()
+	{
+		Matrix inv = new Matrix(number);
+		double[][] arr = new double[number][number];
+		double det = determinant();
+		
+		for(int i = 0; i < number ; ++i)//increments i before the current expression is evaluated
+		{
+			for(int j =0; j < number ; ++j)
+			{
+				inv.mdata[i][j] = Math.pow(-1.0 , (double)i +j) * subMatrix(j, i).determinant() / det;
+				//this if statement is used for fail safe of negative 0 which is
+				// not a real number
+				if(inv.mdata[i][j] == -0)
+				{
+					inv.mdata[i][j] = 0;
+				}
+			}
+		}
+		return inv;//returns the Matrix
+		
+	}
+	public Matrix subMatrix(int r, int c)
+	{
+		Matrix sub = new Matrix(number - 1);
+		int row = 0;
+		for(int i = 0; i < number ; ++i)
+		{
+			if(i == r)
+			{
+				continue;
+			}
+			int col = 0;
+			for(int j = 0; j < number; ++j)
+			{
+				if(j == c)
+				{
+					continue;
+				}
+				sub.mdata[row][col] = mdata[i][j];
+				++col;
+			}
+			++row;
+		}
+		return sub;
+	}
  }
 
