@@ -10,4 +10,10 @@ public class Matrix
 		MaxSize = myNum;
 		number = myNum;
 	}
+	public void setMatrix(double[][] arr)
+	{
+		//set the array parameter to the private member variable.
+		mdata = arr;
+	}
  }
+
